@@ -8,7 +8,17 @@ function Slider(slider) {
     let next
     // select elements needed for the slider
     const slides = slider.querySelectorAll('.slides');
+    const prevButton = document.querySelector('.goToPrev')
+    const nextButton = document.querySelector('.goToNext')
 
+    function startSlider() {
+        current = slider.querySelector('.current') || 
+        slides.firstElementChild;
+        console.log(current)
+    }
+    
+// when this slider is created, run the start slider function
+   startSlider() 
 }
 
 const mySlider = Slider(document.querySelector('.slider'))
