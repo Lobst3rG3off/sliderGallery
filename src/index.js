@@ -3,8 +3,8 @@ function Slider(slider) {
         throw new Error('No sliderPassed')
     }
     // create some variables for working with the slider
-    let current
     let prev
+    let current
     let next
     // select elements needed for the slider
     const slides = slider.querySelector('.slides');
@@ -26,10 +26,16 @@ function Slider(slider) {
     function move(direction) {
         // first strip the classes off the current slides
         const classesToRemove = ['prev', 'current', 'next'];
-
         prev.classList.remove(...classesToRemove);
         current.classList.remove(...classesToRemove);
         next.classList.remove(...classesToRemove);
+        if (direction === 'back') {
+            // make a new array of the new values, and destructure them over and into the prem current and next variables
+            [prev, current, next] = [prev.previousElementSibling, prev, current];           
+        } else {
+            [prev, current, next] = [current, next, next.nextElementSibling];
+        }
+        applyClasses();
     }
 
 // when this slider is created, run the start slider function
