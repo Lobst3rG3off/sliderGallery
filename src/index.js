@@ -41,6 +41,10 @@ function Slider(slider) {
 // when this slider is created, run the start slider function
    startSlider() 
    applyClasses()
+
+//    Event LIsteners
+prevButton.addEventListener('click', () => move('back'))
+nextButton.addEventListener('click', move)
 }
 
 const mySlider = Slider(document.querySelector('.slider'))
