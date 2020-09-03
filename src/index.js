@@ -14,11 +14,27 @@ function Slider(slider) {
     function startSlider() {
         current = slider.querySelector('.current') || 
         slides.firstElementChild;
-        console.log(current)
+        prev = current.previousElementSibling || slides.lastElementChild;
+        next = current.nextElementSibling || slides.lastElementChild;
+    }
+
+    function applyClasses() {
+        current.classList.add('current')
+        prev.classList.add('prev')
+        next.classList.add('next')
+    }
+    function move(direction) {
+        // first strip the classes off the current slides
+        const classesToRemove = ['prev', 'current', 'next'];
+
+        prev.classList.remove(...classesToRemove);
+        current.classList.remove(...classesToRemove);
+        next.classList.remove(...classesToRemove);
     }
 
 // when this slider is created, run the start slider function
    startSlider() 
+   applyClasses()
 }
 
 const mySlider = Slider(document.querySelector('.slider'))
